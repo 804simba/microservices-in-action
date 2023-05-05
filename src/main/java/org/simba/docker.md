@@ -2,8 +2,8 @@
 
 Docker is a virtualization tool used for containerizing applications. The containers isolate the applications from the environments they run in and help the engineers treat and manage the infrastructure environments as software.
 
-- Version: Type in docker --version to get the installed docker version.
-- Ps: Type in docker ps to show the containers.
+- Version: Type in `docker --version` to get the installed docker version.
+- Ps: Type in `docker ps` to show the containers.
 - Build: Type in docker build. It builds a docker image from a Dockerfile.
   - Container: Type in docker container to manage containers. Within a docker container, we need to specify a sub-command e.g.
   - `docker container attach`: To attach local standard input, output, and error streams to a running container
