@@ -42,7 +42,7 @@ Microservice design patterns were built on these principles:
 
 ## 1. Decomposition patterns
 - Decompose by business capability: This is something that a business does in order to generate value.
-- Decompose by subdomain involves using Domain-Driven Design (DDD); This breaks the whole domain model created for the enterprise into subdomains e.g. Order Class, might be decomposed into Order Management, Order Taking, Order Delivery etc., to avoid "God Classes". Each subdomain will have a model and the scope of each model is called the bounded context on which each microservice will be developed around.
+- Decompose by subdomain involves using Domain-Driven Design (DDD); This breaks the whole domain model created for the enterprise into subdomains e.g. Order Class, might be decomposed into Order Management, Order Taking, Order Delivery etc., to avoid "God Classes". Each subdomain will have a model, and the scope of each model is called the bounded context on which each microservice will be developed around.
 - Strangler pattern: It involves breaking a service into different domains and hosting them as separate services. This helps with decomposing the monolithic application while it is being used live, by doing it one domain at a time. Eventually, the newly refactored application "strangles" or "replaces" the original application, until you can finally shut off the monolithic application.
 
 ## 2.  Integration patterns
@@ -80,17 +80,24 @@ Microservice design patterns were built on these principles:
 - ### Distributed tracing
   - It provides a service for tracing a request end-to-end across multiple services, which is useful for troubleshooting. It assigns each external request a unique external request id, passes the external request id to all services, includes the external request id in all log messages. Records information (e.g. start time, end time) about the requests and operations performed when handling an external request in a centralized service.
 - ### Health Check
-  - 
+  - Each service needs to have an endpoint which can be used to check the health of the application, such as `/health`. This API should o check the status of the host, the connection to other services/infrastructure, and any specific logic. Spring Boot actuator does implement a `/health` endpoint and the implementation can be customized, as well.
 
 ## 5. Cross-Cutting Concern pattern
 - ### External configuration:
-  -  
+  -  It enables us to externalize all the configurations, including endpoint URLs and credentials. The application should load them either at startup or on the fly. This helps avoid code modification for configuration changes. Spring Cloud config server provides the option to externalize the properties to GitHub and load them as environment properties. These can be accessed by the application on startup or can be refreshed without a server restart.
 - ### Service Discovery Pattern
-  - 
+  - This involves decoupling the producer and consumer services dependencies, as the IP addresses are dynamically assigned to the service instances with container technologies. This involves, creating a service registry which will keep the metadata of each producer service. A service instance should register to the registry when starting and deregister when shutting down. The consumer or router should query the registry, and find out the location of the service. The registry also needs to perform health checks on the producer services to ensure that only working instances are available to be consumed through it. There are two (2) types of service discovery: 1. Client-side discovery (Netflix Eureka). 2. Server-side discovery (AWS-ALB). 
 - ### Circuit breaker pattern
-  - 
+  - It helps avoid cascading service failures and handle them efficiently in the event the service being called by another service for data is down which would lead to exhausting network resources and slowing performance; This is done by making the consumer invoke a remote service via a proxy that is similar in operation to an electrical circuit breaker. Which blocks off all requests to the remote service (Circuit breaker), when the number of failures crosses a threshold for the duration of a timeout period. After the timeout period expires, the circuit breaker allows a limited number of test requests to pass through, if they are successful, it then resumes back to its normal operation. Otherwise, the timeout period begins again. This is used to improve user experience. 
 - ### Blue-Green Deployment Pattern
-  - 
+  - The blue-green deployment strategy can be implemented to reduce or remove downtime. It achieves this by running two identical production environments, Blue and Green.
+
+Other patterns used in microservices architecture include:
+  - Sidecar
+  - Chained Microservice
+  - Branch Microservice
+  - Event Sourcing Pattern
+  - Continuous Delivery Patterns, and more.
 
 # Event-driven architecture (EDA)
 Events are used to trigger actions across multiple systems or services. Events are sort of like notifications, which contains data about the change of state that triggered that event, and this data can then be used by the consumers to perform some actions and so on. One benefit of Event-Driven microservices architecture is that it allows for the re-usability of existing microservices and also creating of new microservices as long as they can publish and subscribe to an event broker system.
