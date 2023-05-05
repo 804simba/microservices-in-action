@@ -4,6 +4,7 @@ Resources:
 3. https://www.linkedin.com/pulse/api-gateway-pattern-ronen-hamias/
 4. https://medium.com/fintechexplained/what-is-event-driven-microservices-architecture-278d9e5adf8a
 5. https://dzone.com/articles/design-patterns-for-microservices
+6. http://highscalability.com/blog/2018/4/5/do-you-have-too-many-microservices-five-design-attributes-th.html
 
 # Microservice:
 It is the approach of building software systems where the application is broken down into smaller, independently deployable services that communicate with each using light-weight protocols, such as HTTP or messaging systems.
@@ -96,7 +97,7 @@ Other patterns used in microservices architecture include:
   - Sidecar
   - Chained Microservice
   - Branch Microservice
-  - Event Sourcing Pattern
+  - Event Sourcing Pattern (allows us to store events in an event source, where they can be stored in the order they arrive which allows us to replay the events for troubleshooting straight the step that failed).
   - Continuous Delivery Patterns, and more.
 
 # Event-driven architecture (EDA)
