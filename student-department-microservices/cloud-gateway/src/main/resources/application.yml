@@ -1,0 +1,36 @@
+server:
+  port: 9191
+
+spring:
+  application:
+    name: API-GATEWAY
+  cloud:
+    gateway:
+      routes:
+        - id: USER-SERVICE
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/users/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: USER-SERVICE
+                fallback: forward:/user-service-fallback # get the equivalent circuit breaker configuration for resilience4j
+            - name: Timeout
+              args:
+                timeout: 4000
+        - id: DEPARTMENT-SERVICE
+          uri: lb://DEPARTMENT-SERVICE
+          predicates:
+            - Path=/departments/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: USER-SERVICE
+                fallback: forward:/department-service-fallback
+            - name: Timeout
+              args:
+                timeout: 4000
+
+## TODO configure Resilience4j
+## TODO Resilience4j dashboard
