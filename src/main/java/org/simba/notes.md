@@ -107,3 +107,15 @@ Events are used to trigger actions across multiple systems or services. Events a
 
 Side notes:
   - Materialized views are database objects that contain the results of a precomputed query. Unlike regular views, which are virtual tables that represent the result of a stored query, materialized views store the actual data in a physical table. This means that the results of the query are precomputed and stored in the materialized view, allowing for faster access to the data when the query is executed again. While, Regular views are database objects that provide a virtual table based on the result set of an SQL query. They are not materialized, meaning they do not store the data themselves. Instead, they are simply stored queries that can be accessed and queried like a table.
+
+# Load Balancing
+  ## Layer 4 Load balancing:
+ - Operates at the Transport layer (Layer 4) of the OSI model. 
+ - Focuses on routing traffic based on network-level information such as IP addresses and port numbers. 
+ - Typically, performs load balancing based on TCP (Transmission Control Protocol) or UDP (User Datagram Protocol) connection information. 
+ - Distributes incoming traffic across backend servers using methods like round-robin, least connections, or IP hash.
+
+## Layer 7 Load balancing:
+ - Operates at the Application layer (Layer 7) of the OSI model.
+ - Analyzes traffic at the application protocol level, which includes understanding application-specific protocols like HTTP, HTTPS, SMTP, or FTP. 
+ - Can make more intelligent routing decisions based on information extracted from the application layer, such as URL paths, cookies, or HTTP headers.
