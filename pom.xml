@@ -25,5 +25,6 @@
   <modules>
     <module>kafka-demo</module>
     <module>student-department-microservices</module>
+    <module>rabbit-mq-tutorial</module>
   </modules>
 </project>

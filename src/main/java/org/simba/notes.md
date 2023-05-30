@@ -5,6 +5,7 @@ Resources:
 4. https://medium.com/fintechexplained/what-is-event-driven-microservices-architecture-278d9e5adf8a
 5. https://dzone.com/articles/design-patterns-for-microservices
 6. http://highscalability.com/blog/2018/4/5/do-you-have-too-many-microservices-five-design-attributes-th.html
+7. https://sharmarajdaksh.github.io/blog/the-what-why-and-how-of-message-queues
 
 # Microservice:
 It is the approach of building software systems where the application is broken down into smaller, independently deployable services that communicate with each using light-weight protocols, such as HTTP or messaging systems.
