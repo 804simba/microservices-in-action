@@ -120,3 +120,29 @@ Side notes:
  - Operates at the Application layer (Layer 7) of the OSI model.
  - Analyzes traffic at the application protocol level, which includes understanding application-specific protocols like HTTP, HTTPS, SMTP, or FTP. 
  - Can make more intelligent routing decisions based on information extracted from the application layer, such as URL paths, cookies, or HTTP headers.
+
+# Event-Driven Architecture
+What is an Event?
+- It is a change in state or an update that is of interest to the system or its components.
+- It allows systems to react, and respond to changes or triggers in an asynchronous and decoupled manner.
+- They are usually structured self-contained data objects that contain relevant information about the occurrence.
+
+An event-driven architecture uses events to trigger and communicate between decoupled services.
+
+Advantages of EDA
+- Communication flow: Components or services exchange events asynchronously, without a pre-defined request-response pattern.
+- Asynchronous interaction: Event-driven systems are designed to handle events as they occur, rather than waiting for explicit requests, which allows for concurrent and non-blocking processing.
+- Stateless communication: Events are self-contained pieces of information, but there is no inherent requirement to maintain session state. Components communicate by publishing events to a central event bus or using a publish-subscribe mechanism.
+
+Approaches to handling events in distributed systems:
+1. Publish-Subscribe model: This is a messaging pattern where senders(publishers) do not directly communicate with specific receivers(subscribers). Instead, publishers publish messages/events to a central entity known as a message broker. Subscribers express their interest in receiving specific types of messages/events by subscribing to the broker.
+  - Key concepts in the Publish-Subscribe model:
+    - Publishers: Entities that generate events or messages.
+    - Subscribers: Entities that express interest in receiving specific types of events or messages.
+    - Broker/Message Broker: A central intermediary that receives events/messages from publishers and delivers them to interested subscribers.
+
+2. Event Streaming model: Also known as the event sourcing or event log, focuses on capturing and persisting a sequential record of events as a system's source of truth. In this model, each action within a system generates an event, which is appended to an event log or stream. The event stream maintains a historical record of events that have occurred in the system.
+  - Key concepts in the Event Streaming model
+    - Event Log/Event Stream: A sequential record of events, often persisted in a distributed log or stream.
+    - Event Producers: Entities that generate events and append them to the event log.
+    - Event Consumers: Entities that read events from the event log and react to them.
